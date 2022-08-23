@@ -7,9 +7,11 @@ const connectDatabase = () => {
         useUnifiedTopology: true,
         // useCreateIndex: true,
       })
-      .then((data) => {
-        console.log(`Mongodb connected with server: ${data.connection.host}`);
-      });
+      // hta sakte hai bcs hmne server me unhandled rejection ke liye bna liye hai
+      
+      // .then((data) => {
+      //   console.log(`Mongodb connected with server: ${data.connection.host}`);
+      // });
   };
   
   module.exports = connectDatabase;
