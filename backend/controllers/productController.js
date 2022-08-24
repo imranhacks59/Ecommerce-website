@@ -1,6 +1,7 @@
 const Product= require("../models/productModels");
 const Errorhandler = require("../utils/errorHandler");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
+const Apifeatures = require("../utils/apiFeatures");
 
 // create product --Admin
 exports.createProduct = catchAsyncErrors(async(req,res,next)=>{
@@ -14,10 +15,25 @@ exports.createProduct = catchAsyncErrors(async(req,res,next)=>{
 
 // get all products
 exports.getAllProducts=catchAsyncErrors( async (req,res)=>{
-    const products = await Product.find()
+   
+    // pagination if 100 products then show diff page like 5
+    const resultPerPage = 5;
+    const ProductCount= await Product.countDocuments(); //frontend me kam ayenge
+
+    const apiFeature = new Apifeatures(Product.find(),req.query)
+    .search()
+    .filter()
+    .pagination(resultPerPage);
+    // const products = await Product.find()
+    // product.find( upar de hi diye hai to to idhar bhe denge to bakar ho jayegfa hme to query apiFeature se mil hi ja rha)
+    const products = await apiFeature.query;
+
     res.status(200).json({
+
         success:true,
-        products
+        products,
+        ProductCount
+
 })
 })
 
