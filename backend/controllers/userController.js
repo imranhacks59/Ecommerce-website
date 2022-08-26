@@ -1,6 +1,7 @@
 const Errorhandler = require("../utils/errorHandler");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const User = require("../models/userModel");
+const sendToken = require("../utils/jwtToken");
 
 // register a user
 exports.registerUser = catchAsyncErrors (async (req,res,next)=>{
@@ -14,13 +15,15 @@ exports.registerUser = catchAsyncErrors (async (req,res,next)=>{
             url:"prifilePicUrl", 
         }
     });
-    const token = user.getJWTToken();
+    // const token = user.getJWTToken();
 
-    res.status(201).json({
-        success:true,
-        // user ---ab user ke jaga token bhej denge
-        token
-    });
+    // res.status(201).json({
+    //     success:true,
+    //     // user ---ab user ke jaga token bhej denge
+    //     token
+    // });
+    // ab only upar wale ke jaga sendToken bhej denge
+    sendToken(user,200,res);
 });
 
 // login user
@@ -42,11 +45,18 @@ exports.loginUser = catchAsyncErrors (async (req,res,next)=>{
         return next(new Errorhandler("Invalid email or password",401));
 
     }
-    const token = user.getJWTToken();
+    sendToken(user,200,res);
 
+});
+
+// Logout user
+exports.logout=catchAsyncErrors(async (req,res,next)=>{
+    res.cookie("token",null,{
+        expires:new Date(Date.now()),
+        httpOnly:true,
+    });
     res.status(200).json({
         success:true,
-        // user ---ab user ke jaga token bhej denge
-        token
-    }); 
+        message:"Logged Out",
+    });
 });
