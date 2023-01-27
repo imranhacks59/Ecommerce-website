@@ -7,7 +7,7 @@ import {Rating} from '@mui/material/';
 
 
 
-const Product = () => {
+const Product = ({products}) => {
 
 
   const options={
@@ -34,7 +34,7 @@ const Product = () => {
               <span className='productSpan'>(109 Reviews)</span>
             </div>
             
-            <p>Price</p>
+            <p>{products.title}</p>
          </div>
             
            

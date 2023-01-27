@@ -1,8 +1,18 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import './Home.css';
 import Product from './Product';
+import { useDispatch, useSelector,  } from 'react-redux';
+import { getProduct } from '../../actions/productAction';
 
 const Home = () => {
+
+  const {products} = useSelector((state)=>state.products)
+  const dispatch = useDispatch();
+
+  useEffect(()=>{
+
+    dispatch(getProduct)
+  },[dispatch])
   return (
     <Fragment>
     <div className='banner'>
@@ -16,14 +26,14 @@ const Home = () => {
     </div>
 
    
-         <h2 className='homeHeading'>Featured Products</h2>
+        <h2 className='homeHeading'>Featured Products</h2>
         <div className='homePageProducts'>
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
+        <Product products={products} />
+        <Product products={products}/>
+        <Product products={products} />
+        <Product products={products}/>
+        <Product products={products}/>
+        <Product products={products}/>
         </div>
         
 
