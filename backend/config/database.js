@@ -8,10 +8,10 @@ const connectDatabase = () => {
         // useCreateIndex: true,
       })
       // hta sakte hai bcs hmne server me unhandled rejection ke liye bna liye hai
-      
-      // .then((data) => {
-      //   console.log(`Mongodb connected with server: ${data.connection.host}`);
-      // });
+      // DB_URI = "mongodb://localhost:27017/Ecommerce
+      .then((data) => {
+        console.log(`Mongodb connected with server: ${data.connection.host}`);
+      });
   };
   
   module.exports = connectDatabase;

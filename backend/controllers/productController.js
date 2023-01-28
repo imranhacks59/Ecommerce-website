@@ -16,8 +16,10 @@ exports.createProduct = catchAsyncErrors(async(req,res,next)=>{
 // get all products
 exports.getAllProducts=catchAsyncErrors( async (req,res)=>{
    
+//    return next(new ("not found",500))
+
     // pagination if 100 products then show diff page like 5
-    const resultPerPage = 5;
+    const resultPerPage = 8;
     const ProductCount= await Product.countDocuments(); //frontend me kam ayenge
 
     const apiFeature = new Apifeatures(Product.find(),req.query)

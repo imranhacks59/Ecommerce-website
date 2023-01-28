@@ -11,7 +11,7 @@ const Product = ({products}) => {
 
 
   const options={
-    defaultValue:4 ,
+    defaultValue:products.ratings,
     precision:0.5,
     readOnly:true
    };
@@ -19,9 +19,9 @@ const Product = ({products}) => {
     <Fragment>
       
          <div className='productCard'>
-         <img src={productImage} alt="" />
+         <img src={products.images[0].url} alt={products.name} />
 
-           <p>T-shirts</p> 
+           <p>{products.name}</p> 
             <div>
               {/* <Rating 
               value={2}
@@ -31,10 +31,10 @@ const Product = ({products}) => {
               size={24}
               /> */}
               <Rating {...options} />
-              <span className='productSpan'>(109 Reviews)</span>
+              <span className='productSpan'>({products.ratings} Reviews)</span>
             </div>
             
-            <p>{products.title}</p>
+            <p>{` ₹​ ${products.price}`}</p>
          </div>
             
            

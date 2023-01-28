@@ -3,13 +3,15 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 import {
+    productDetailsReducer,
     productReducer
 } from "./reducers/productReducer"
 
 const reducer = combineReducers({
-    products:productReducer
+    products:productReducer,
+    productsDetails:productDetailsReducer
 })
-
+console.log(reducer.products)
 const middleware =[thunk]
 
 const store = createStore(
