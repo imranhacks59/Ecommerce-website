@@ -16,7 +16,7 @@ const Home = () => {
       alert.error(error);
       dispatch(clearErrors());
     }
-    dispatch(getProduct)
+    dispatch(getProduct())
   },[dispatch])
   return (
 

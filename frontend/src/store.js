@@ -9,7 +9,7 @@ import {
 
 const reducer = combineReducers({
     products:productReducer,
-    productsDetails:productDetailsReducer
+    productDetails:productDetailsReducer
 })
 console.log(reducer.products)
 const middleware =[thunk]

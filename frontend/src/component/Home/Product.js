@@ -4,7 +4,7 @@ import "./Home.css"
 import {Rating} from '@mui/material/';
 // import Rating from 'material-ui-rating'
 // import Rating from 'react-stars'
-
+import {Link} from 'react-router-dom'
 
 
 const Product = ({products}) => {
@@ -17,7 +17,7 @@ const Product = ({products}) => {
    };
   return (
     <Fragment>
-      
+        <Link to={`product/${products._id}`}>
          <div className='productCard'>
          <img src={products.images[0].url} alt={products.name} />
 
@@ -36,6 +36,7 @@ const Product = ({products}) => {
             
             <p>{` ₹​ ${products.price}`}</p>
          </div>
+         </Link>
             
            
     </Fragment>
