@@ -95,3 +95,17 @@ exports.deleteproduct =catchAsyncErrors( async(req,res,next)=>{
         message:"product delete successfully"
     })
 })
+
+// Get All Reviews of a product
+exports.getProductReviews = catchAsyncErrors(async (req, res, next) => {
+    const product = await Product.findById(req.query.id);
+  
+    if (!product) {
+      return next(new Errorhandler("Product not found", 404));
+    }
+  
+    res.status(200).json({
+      success: true,
+      reviews: product.reviews,
+    });
+  });

@@ -52,3 +52,33 @@
   .details-price{
     font: 600 1.6vmax "Roboto";
   }
+
+  .details-addCart{
+    width: 70%;
+    display: flex;
+    align-items: center;
+  }
+  .details-addCart > .details-addCart-block1{
+    display: flex;
+    
+    /* height: vmax; */
+  }
+  .details-addCart > .details-addCart-block1 >input{
+    width: 30px;
+  }
+
+  .details-addCart > button{
+    margin-left: 1vmax;
+    background-color: rgba(0, 0, 0, 0.616);
+    border: none;
+    width: 80px;
+    height: 22px;
+  }
+
+  .reviewsHeading{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.226);
+    text-align: center;
+    width: 20vmax;
+    margin: auto;
+    margin-bottom: 4vmax;
+  }
