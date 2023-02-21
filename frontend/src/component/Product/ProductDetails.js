@@ -3,7 +3,7 @@ import React, { Fragment, useEffect, useState } from 'react'
 import './ProductDetails.css'
 import Carousel from 'react-material-ui-carousel'
 import { useDispatch, useSelector } from 'react-redux'
-import { getProductDetails } from '../../actions/productAction'
+import { getProductDetails, newProductReview } from '../../actions/productAction'
 import { useParams } from 'react-router-dom'
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Rating } from '@mui/material'
 import Loader from '../Layout/Loader/Loader'
@@ -12,6 +12,7 @@ import ReviewsCard from './ReviewsCard'
 const ProductDetails = () => {
   
   const {loading,error,product} = useSelector((state)=>state.productDetails);
+  console.log(product)
   const {id} =useParams();
   const dispatch=useDispatch();
   const options={
@@ -26,12 +27,26 @@ const ProductDetails = () => {
 
   const [open,setOpen] = useState(false)
 
+  const {success} = useSelector((state)=>state.newReview)
+
   const submitReviewToggle = ()=>{
     open ? setOpen(false) : setOpen(true)
   }
 
-  const reviewSubmitHandler =()=>{
+  // new review function
+  const [rating,setRating] = useState(0);
+  const [comment, setComment ]=useState('');
 
+  const reviewSubmitHandler =()=>{
+       const myForm = new FormData();
+
+       myForm.set("rating",rating);
+       myForm.set('comment',comment);
+       myForm.set('productId',id);
+
+       dispatch(newProductReview(myForm));
+
+       setOpen(false);
   }
 
   return (
@@ -108,10 +123,15 @@ const ProductDetails = () => {
                        </DialogTitle>
                        <DialogContent>
                          <Rating
+                           value={rating}
+                           onChange={(e)=>setRating(e.target.value)}
+                           
                          />
                          <textarea
                            cols={30}
                            rows={5}
+                           value={comment}
+                           onChange={(e)=>setComment(e.target.value)}
                          />
                        </DialogContent>
                        <DialogActions>

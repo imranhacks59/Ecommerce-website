@@ -7,21 +7,21 @@ import {Rating} from '@mui/material/';
 import {Link} from 'react-router-dom'
 
 
-const Product = ({products}) => {
+const Product = ({product}) => {
 
 
   const options={
-    defaultValue:products.ratings,
+    defaultValue:product.ratings,
     precision:0.5,
     readOnly:true
    };
   return (
     <Fragment>
-        <Link to={`product/${products._id}`}>
+        <Link to={`/product/${product._id}`}>
          <div className='productCard'>
-         <img src={products.images[0].url} alt={products.name} />
+         <img src={product.images[0].url} alt={product.name} />
 
-           <p>{products.name}</p> 
+           <p>{product.name}</p> 
             <div>
               {/* <Rating 
               value={2}
@@ -31,10 +31,10 @@ const Product = ({products}) => {
               size={24}
               /> */}
               <Rating {...options} />
-              <span className='productSpan'>({products.ratings} Reviews)</span>
+              <span className='productSpan'>({product.ratings} Reviews)</span>
             </div>
             
-            <p>{` ₹​ ${products.price}`}</p>
+            <p>{` ₹​ ${product.price}`}</p>
          </div>
          </Link>
             
