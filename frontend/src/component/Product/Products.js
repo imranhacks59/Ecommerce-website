@@ -6,15 +6,18 @@ import Product from '../Home/Product';
 import './Products.css'
 import Loader from '../Layout/Loader/Loader'
 import { useParams } from 'react-router-dom';
+import Pagination from "react-js-pagination";
+
 
 const Products = () => {
     
   const {id} = useParams();
     const dispatch = useDispatch();
-    const {loading,products} = useSelector((state)=>state.products);
+    const {loading,products,productsCount,resultPerPage} = useSelector((state)=>state.products);
     const [category,setCategory] = useState('');
     const [price,setPrice] = useState([0,25000])
-    const [rating,setRating] = useState(0);
+    const [ratings,setRatings] = useState(0);
+    const [currentPage,setCurrentPage] = useState(1)
     const categories=[ 
     "Laptop",
     "Footwear",
@@ -31,8 +34,8 @@ const Products = () => {
     }
     useEffect(()=>{
 
-      dispatch(getProduct(keyword,category,price,rating));
-    },[dispatch,keyword,category,price,rating])
+      dispatch(getProduct(keyword,category,price,ratings));
+    },[dispatch,keyword,category,price,ratings])
 
     return (
     <Fragment>
@@ -78,9 +81,9 @@ const Products = () => {
             <fieldset>
               <Typography component="legend">Ratings Above</Typography>
               <Slider
-               value={rating}
+               value={ratings}
                onChange={(e,newRating)=>{
-                setRating(newRating)}}
+                setRatings(newRating)}}
                 aria-labelledby="continuous-slider"
                 valueLabelDisplay="auto"
                 min={0}
@@ -88,6 +91,22 @@ const Products = () => {
               />
             </fieldset>
                  
+          </div>
+          <div className='pagination-box'>
+            <Pagination
+            activePage={currentPage}
+            itemsCountPerPage={resultPerPage}
+            totalItemsCount={productsCount}
+            onChange={setCurrentPage}
+            nextPageText="Next"
+            prevPageText="Prev"
+            firstPageText="1st"
+            lastPageText="Last"
+            itemClass="page-item"
+            linkClass="page-link"
+            activeClass="pageItemActive"
+            activeLinkClass="pageLinkActive"
+            />
           </div>
      
          </Fragment>

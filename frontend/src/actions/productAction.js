@@ -18,14 +18,14 @@ import {
 //   get All products
   // export const getProduct =()=>
       export const getProduct
-      =(keyword="",category,price=[0,25000],rating=0)=> 
+      =(keyword="",category,price=[0,25000],ratings=0)=> 
       async(dispatch)=>{
       try{
           dispatch({type:ALL_PRODUCT_REQUEST})
 
-            let link = `/api/v1/products?keyword=${keyword}&price[gte]=${price[0]}&price[lte]=${price[1]}&rating[gte]=${rating}`;
+            let link = `/api/v1/products?keyword=${keyword}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}`;
           if(category){
-            link=`/api/v1/products?keyword=${keyword}&price[gte]=${price[0]}&price[lte]=${price[1]}&rating[gte]=${rating}&category=${category}`
+            link=`/api/v1/products?keyword=${keyword}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}&category=${category}`
           }
          const {data} = await axios.get(link);
          
