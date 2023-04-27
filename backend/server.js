@@ -7,7 +7,7 @@ const connectDatabase = require("./config/database")
     console.log(`Error:${err.message}`);
     console.log(`Shutting down the server due to uncaught exception`);
     process.exit(1);
-  })
+  });
 // config
 dotenv.config({path:"backend/config/config.env"})
 

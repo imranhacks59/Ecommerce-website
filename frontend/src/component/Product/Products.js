@@ -10,8 +10,9 @@ import Pagination from "react-js-pagination";
 
 
 const Products = () => {
-    
-  const {id} = useParams();
+    // let {keyword} = props
+  const {keyword} = useParams();
+  console.log(keyword)
     const dispatch = useDispatch();
     const {loading,products,productsCount,resultPerPage} = useSelector((state)=>state.products);
     const [category,setCategory] = useState('');
@@ -27,7 +28,8 @@ const Products = () => {
     "Camera",
     "SmartPhones",]
     console.log(products)
-    const keyword = id
+
+    // const keyword = match.params.keyword
 
     const changePrice=(event,newPrice)=>{
       setPrice(newPrice)
