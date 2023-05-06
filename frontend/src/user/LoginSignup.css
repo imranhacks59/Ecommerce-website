@@ -124,6 +124,30 @@
     transform: translateX(100%);
   }
 
+  @media screen and (max-width:600px) {
+    
+    .loginSignup-container{
+      background-color: white;
+    }
+    .loginSignup-box{
+      width: 100vw;
+      height: 95vh;
+      background-color: white;
+      overflow: hidden;
+   }
+   .loginSignup-toggle >p{
+    font: 300 1.5vmax "Roboto";
+  }
+  .loginForm,.signupForm{
+    padding: 5vmax;
+}
+    .loginSignup-toggle{
+      /* display: flex; */
+      /* justify-content: space-around; */
+      height: 5vmax;
+  }
+  }
+
 
 
 
