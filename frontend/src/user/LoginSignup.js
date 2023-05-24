@@ -25,17 +25,17 @@ const LoginSignup = () => {
 
    const registerDataChange=(e)=>{
     e.preventDefault();
-    if(e.target.name==="avatar"){
-       const reader = new FileReader();
-       reader.onload=()=>{
-         if(reader.readyState===2){
-          setAvatarPreview(reader.result)
-          setAvatar(reader.result)
-         }
-       }
-    } else{
+    // if(e.target.name==="avatar"){
+    //    const reader = new FileReader();
+    //    reader.onload=()=>{
+    //      if(reader.readyState===2){
+    //       setAvatarPreview(reader.result)
+    //       setAvatar(reader.result)
+    //      }
+    //    }
+    // } else{
       setUser({...user,[e.target.name]:e.target.value})
-    }  
+    // }  
    }
   //  console.log("name"+ name,email,password)
    console.log(user) 
@@ -44,25 +44,24 @@ const LoginSignup = () => {
       dispatch(userLogin(loginEmail,loginPassword));
  
    }
-   const registerSubmit=(e)=>{
-    e.preventDefault();
-    dispatch(userRegister(name,email,password))
-   }
   //  const registerSubmit=(e)=>{
   //   e.preventDefault();
-  //   const formData = new FormData();
+  //   dispatch(userRegister(name,email,password))
+  //  }
+   const registerSubmit=(e)=>{
+    e.preventDefault();
+    const formData = new FormData();
 
-  //   formData.append('name',name);
-  //   formData.append('email',email);
-  //   formData.append('password',password);
-  //   formData.append('image',avatar)
-  //   dispatch(userRegister(formData))
-  //  }  
+    formData.append('name',name);
+    formData.append('email',email);
+    formData.append('password',password);
+    dispatch(userRegister(formData))
+   }  
    useEffect(()=>{
     if(isAuthenticated){
       navigate('/')
     }
-   })
+   },[isAuthenticated])
 
     const loginTab = useRef(null);
     const registerTab = useRef(null);

@@ -5,7 +5,8 @@ import {
 from '../constants/userConstant'
 import axios from 'axios'
 
-export const userRegister=(name,email,password)=>async(dispatch)=>{
+// export const userRegister=(name,email,password)=>async(dispatch)=>{
+  export const userRegister=(userData)=>async(dispatch)=>{
     // export const userRegister=async(userData)=>{
     // console.log("dispatch data"+userData)
    try {
@@ -21,8 +22,8 @@ export const userRegister=(name,email,password)=>async(dispatch)=>{
         }
     }
     // const {name,email,password} = userData
-    console.log(name,email)
-    const {data} = await axios.post(`/api/v1/register`,{name,email,password},config)
+    // console.log(name,email)
+    const {data} = await axios.post(`/api/v1/register`,userData,config)
     dispatch({
         type:USER_REGISTER_SUCCESS,
         payload:data.user
