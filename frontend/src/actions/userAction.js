@@ -1,6 +1,6 @@
 import {
     USER_REGISTER_REQUEST,USER_REGISTER_SUCCESS,USER_REGISTER_FAIL,
-    USER_LOGIN_REQUEST,USER_LOGIN_SUCCESS,USER_LOGIN_FAIL
+    USER_LOGIN_REQUEST,USER_LOGIN_SUCCESS,USER_LOGIN_FAIL, LOAD_USER_REQUEST, LOAD_USER_SUCCESS, LOAD_USER_FAIL, USER_LOGOUT_SUCCESS, USER_LOGOUT_FAIL
 }
 from '../constants/userConstant'
 import axios from 'axios'
@@ -48,7 +48,44 @@ export const userLogin = (email,password) => async (dispatch) => {
     } catch (error) {
       dispatch({
         type: USER_LOGIN_FAIL,
-        payload: error.response.data.message,
+        payload: error.response.data.error,
       });
+      // console.log("error"+error.response.data.error)
     }
   };
+
+  export const loadUser=()=>async(dispatch)=>{
+    
+    try {
+      dispatch({
+        type:LOAD_USER_REQUEST
+      })
+      // const config = {
+      //   headers:{ 'Content-Type':'application/json'}
+      // }
+      const {data} = await axios.get('/api/v1/me')
+      dispatch({
+        type:LOAD_USER_SUCCESS,
+        payload:data.user
+      })
+    } catch (error) {
+      dispatch({
+        type:LOAD_USER_FAIL,
+        error:error.response.data.error
+      })
+    }
+  }
+
+  export const logout=()=>async(dispatch)=>{
+    try {
+      await axios.get('/api/v1/logout')
+      dispatch({
+        type:USER_LOGOUT_SUCCESS
+      })
+    } catch (error) {
+      dispatch({
+        type:USER_LOGOUT_FAIL,
+        payload:error.response.data.message
+      })
+    }
+  }

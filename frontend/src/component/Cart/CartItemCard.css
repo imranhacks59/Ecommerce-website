@@ -1,0 +1,8 @@
+.cartItemCard{
+    display: flex;
+    gap: 0.4rem;
+}
+.cartItemCard >img{
+    width: 10vmax;
+
+}

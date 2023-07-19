@@ -1,0 +1,44 @@
+.cartContainer{
+    width: 100vw;
+    max-width: 100%;
+    padding: 7vmax;
+}
+.cartHeading{
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 4fr 1fr 1fr;
+    border-bottom: 2px solid gray;
+    width: 90%;
+    margin: auto;
+}
+.cartItems{
+    display: grid;
+    grid-template-columns: 4fr 1fr 1fr;
+    padding: 2vmax 0vmax;
+    width: 90%;
+    margin: auto;
+}
+.cartQuantity{
+    /* display: flex;
+    align-items: center;
+    height: 8vmax; */
+
+}
+.cartQuantity>input{
+    width: 2vw;
+}
+
+.cartTotalPrice{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    /* border-top: 1px solid gray; */
+}
+.cartTotalPriceBox{
+    box-sizing: border-box;
+    border-top: 1px solid gray;
+    margin: 1vmax 4vmax;
+}
+.checkoutButton{
+    display: flex;
+    /* justify-content: flex-end; */
+}

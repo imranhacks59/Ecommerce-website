@@ -28,7 +28,8 @@ import {
             link=`/api/v1/products?keyword=${keyword}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}&category=${category}`
           }
          const {data} = await axios.get(link);
-         
+         console.log('data')
+         console.log(data)
          dispatch({
             type:ALL_PRODUCT_SUCCESS,
             payload:data

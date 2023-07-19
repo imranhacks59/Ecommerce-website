@@ -6,6 +6,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import Face6Icon from '@mui/icons-material/Face6';
 import {useDispatch, useSelector} from 'react-redux'
 import { userLogin, userRegister } from '../actions/userAction';
+import { useAlert } from 'react-alert';
+import { clearErrors } from '../actions/productAction';
 const LoginSignup = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch();
@@ -19,7 +21,7 @@ const LoginSignup = () => {
   });
 
   const {name,email,password} = user
-
+  const alert  = useAlert();
   const [avatar,setAvatar] = useState('/Profile.png')
   const [avatarPreview,setAvatarPreview] = useState('/Profile.png')
 
@@ -58,10 +60,15 @@ const LoginSignup = () => {
     dispatch(userRegister(formData))
    }  
    useEffect(()=>{
+    if(error){
+      alert.error(error);
+      console.log(error)
+      dispatch(clearErrors())
+    }
     if(isAuthenticated){
       navigate('/')
     }
-   },[isAuthenticated])
+   },[dispatch,isAuthenticated,error,alert,navigate])
 
     const loginTab = useRef(null);
     const registerTab = useRef(null);

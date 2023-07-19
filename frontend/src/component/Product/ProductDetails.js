@@ -8,10 +8,13 @@ import { useParams } from 'react-router-dom'
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Rating } from '@mui/material'
 import Loader from '../Layout/Loader/Loader'
 import ReviewsCard from './ReviewsCard'
+import { addToCart } from '../../actions/cartAction'
+import { useAlert } from 'react-alert'
 
 const ProductDetails = () => {
   
-  const {loading,error,product} = useSelector((state)=>state.productDetails);
+  const {loading,product} = useSelector((state)=>state.productDetails);
+  const [quantity,setQuantity]=useState(1);
   console.log(product)
   const {id} =useParams();
   const dispatch=useDispatch();
@@ -48,6 +51,19 @@ const ProductDetails = () => {
 
        setOpen(false);
   }
+  const alert =useAlert();
+  const addToCartHandler=()=>{
+    dispatch(addToCart(id,quantity))
+    alert.success('Item Added to cart')
+  }
+  const decreaseQuantity=()=>{
+    const qty=quantity-1
+    setQuantity(qty)
+  }
+  const increaseQuantity=()=>{
+    const qty=quantity+1;
+    setQuantity(qty)
+  }
 
   return (
     <Fragment>
@@ -57,7 +73,9 @@ const ProductDetails = () => {
             
               <div className='productdetails-1'>
                <div className='productDetailsImages'>
-                  <Carousel>
+                  <Carousel
+                  pagination={true}
+                  >
                   {product.images &&
                         product.images.map((item, i) => (
                           <img
@@ -87,16 +105,18 @@ const ProductDetails = () => {
                  </div>
                  <div className='details-addCart'>
                      <div className='details-addCart-block1'>
-                       <button>-</button>
+                       <button onClick={decreaseQuantity}>-</button>
                        <input
                          type='number'
                          readOnly
-                         value={1}
+                         value={quantity}
                        />
-                       <button>+</button>   
+                       <button onClick={increaseQuantity}>+</button>   
                        
                      </div>
-                     <button>Add to cart</button>
+                     <button 
+                     onClick={addToCartHandler}
+                     >Add to cart</button>
                         
                  </div>
                  <div className='details-stock'>

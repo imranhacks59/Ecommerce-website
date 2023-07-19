@@ -1,4 +1,4 @@
-import { Slider, Typography } from '@mui/material';
+import {  Pagination, Slider, Typography } from '@mui/material';
 import React, { Fragment, useEffect, useState } from 'react'
 import {useDispatch,useSelector} from 'react-redux'
 import { getProduct } from '../../actions/productAction';
@@ -6,7 +6,7 @@ import Product from '../Home/Product';
 import './Products.css'
 import Loader from '../Layout/Loader/Loader'
 import { useParams } from 'react-router-dom';
-import Pagination from "react-js-pagination";
+// import Pagination from "react-js-pagination";
 
 
 const Products = () => {
@@ -19,6 +19,10 @@ const Products = () => {
     const [price,setPrice] = useState([0,25000])
     const [ratings,setRatings] = useState(0);
     const [currentPage,setCurrentPage] = useState(1)
+    console.log(productsCount,resultPerPage)
+    const setCurrentPageNo = (event,value) => {
+      setCurrentPage(value);
+    };
     const categories=[ 
     "Laptop",
     "Footwear",
@@ -30,7 +34,7 @@ const Products = () => {
     console.log(products)
 
     // const keyword = match.params.keyword
-
+    console.log('result per page'+resultPerPage)
     const changePrice=(event,newPrice)=>{
       setPrice(newPrice)
     }
@@ -94,11 +98,11 @@ const Products = () => {
             </fieldset>
                  
           </div>
-          <div className='pagination-box'>
+          {/* <div className='pagination-box'>
             <Pagination
             activePage={currentPage}
             itemsCountPerPage={resultPerPage}
-            totalItemsCount={productsCount}
+            totalItemsCount={productCount}
             onChange={setCurrentPage}
             nextPageText="Next"
             prevPageText="Prev"
@@ -109,7 +113,18 @@ const Products = () => {
             activeClass="pageItemActive"
             activeLinkClass="pageLinkActive"
             />
-          </div>
+          </div> */}
+          <Pagination
+           count={productsCount}
+          //  defaultPage={currentPage}
+           page={currentPage}
+           onChange={setCurrentPageNo}
+           shape="rounded"
+           variant="outlined"
+           color="primary"
+           siblingCount={1}
+           boundaryCount={1}
+           />
      
          </Fragment>
          )

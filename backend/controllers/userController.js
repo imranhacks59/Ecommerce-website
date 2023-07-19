@@ -49,6 +49,15 @@ exports.loginUser = catchAsyncErrors (async (req,res,next)=>{
 
 });
 
+// get user details
+exports.getUserDetails=catchAsyncErrors(async(req,res,next)=>{
+    const user = await User.findById(req.body.id)
+    res.status(200).json({
+        success:true,
+        user
+    })
+})
+
 // Logout user
 exports.logout=catchAsyncErrors(async (req,res,next)=>{
     res.cookie("token",null,{
