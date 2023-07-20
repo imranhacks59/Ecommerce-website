@@ -1,0 +1,17 @@
+.shippingContainer{
+    padding: 10vmax;
+}
+.shippingForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.shippingForm > input{
+    width: 30%;
+    height: 4%;
+    padding: 1vmax 4vmax;
+}
+.shippingForm > input:last-child{
+    margin-left: 20px;
+    margin-top: 20px;
+}

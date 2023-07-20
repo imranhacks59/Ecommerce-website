@@ -16,6 +16,9 @@ import { loadUser } from './actions/userAction';
 import { useSelector } from 'react-redux';
 import Profile from './user/Profile';
 import ProtectedRoute from './component/Route/ProtectedRoute';
+import Shipping from './component/Cart/Shipping';
+import ConfirmOrder from './component/Cart/ConfirmOrder';
+import Payment from './component/Cart/Payment';
 function App() {
 
   const {isAuthenticated,user} = useSelector((state)=>state.user);
@@ -39,14 +42,7 @@ function App() {
         <Route path='/product/:id' element={<ProductDetails />} />
 
         <Route path='/products' element={<Products />} />
-        {/* <Route
-        path="/products"
-        element={
-      <ProtectedRoute isAuthenticated={isAuthenticated}>
-      <Products />
-      </ProtectedRoute>
-      }
-      /> */}
+    
 
         <Route path='/search' element={<Search />} />
 
@@ -55,11 +51,38 @@ function App() {
        <Route
         path="/account"
         element={
-      <ProtectedRoute isAuthenticated={isAuthenticated}>
+      <ProtectedRoute >
       <Profile />
-    </ProtectedRoute>
-    }
-   />
+       </ProtectedRoute>
+      }
+      />
+        <Route
+        path="/shipping"
+        element={
+        <ProtectedRoute >
+        <Shipping />
+        </ProtectedRoute>
+        }
+       />
+       <Route
+        path="/confirm/order"
+        element={
+        <ProtectedRoute >
+        <ConfirmOrder />
+        </ProtectedRoute>
+        }
+       />
+       <Route
+        path="/process/payment"
+        element={
+        <ProtectedRoute >
+        <Payment />
+        </ProtectedRoute>
+        }
+       />
+       {/* <ProtectedRoute>
+          <Route path="/shipping" component={Shipping} />
+        </ProtectedRoute> */}
         </Routes>
 
         <Footer />

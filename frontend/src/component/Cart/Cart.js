@@ -1,8 +1,9 @@
 import React, { Fragment } from 'react'
 import './Cart.css'
 import CartItemCard from './CartItemCard'
-import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { addToCart } from '../../actions/cartAction'
 
 // const cartItems=[
 //   {
@@ -18,8 +19,23 @@ import { useSelector } from 'react-redux'
 // ]
 
 const Cart = () => {
-
+  
+  const dispatch = useDispatch();
   const {cartItems}= useSelector(state=>state.cart)
+  const decreaseQuantity=(id,quantity)=>{
+    // console.log(quantity)
+    const newQty=quantity-1;
+    dispatch(addToCart(id,newQty))
+    
+  }
+  const increaseQuantity=(id,quantity,stock)=>{
+    const newQty=quantity+1
+    dispatch(addToCart(id,newQty))
+  }
+  const navigate=useNavigate()
+  const checkoutHandler=()=>{
+    navigate('/login?navigate=shipping')
+  }
   return (
     <Fragment>
      <div className='cartContainer'>
@@ -35,13 +51,20 @@ const Cart = () => {
                 <div className='cartItems'>
                    <CartItemCard item={item} key={item} />
                    <div className='cartQuantity'>
-                     <button>-</button>
+                     <button onClick={()=>decreaseQuantity(
+                      item.product,
+                      item.quantity
+                     )}>-</button>
                      <input type='text' value={item.quantity} 
                      readOnly />
-                     <button>+</button>
+                     <button onClick={()=>increaseQuantity(
+                      item.product,
+                      item.quantity,
+                      item.stock
+                     )}>+</button>
                   </div>
                   <div className='cartItemPrice'>
-                       150000
+                       {item.price*item.quantity}
                   </div>
                 </div>
               
@@ -53,11 +76,16 @@ const Cart = () => {
             <div className='cartTotalPriceBox'>
                 <p>Total Price</p>
                 <p>
-                    ₹150000
+                    {
+                      cartItems.reduce((acc,item)=>
+                      acc+item.quantity*item.price,
+                      0
+                      )
+                    }
                 </p>
                 <div className='checkoutButton'>
                  <Link to='/shipping'>
-                <button >Check out</button>
+                <button onClick={checkoutHandler} >Check out</button>
                 </Link>
                </div>
             </div>

@@ -2,13 +2,14 @@ import React, { Fragment, useEffect, useRef, useState } from 'react'
 import './LoginSignup.css';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Face6Icon from '@mui/icons-material/Face6';
 import {useDispatch, useSelector} from 'react-redux'
 import { userLogin, userRegister } from '../actions/userAction';
 import { useAlert } from 'react-alert';
 import { clearErrors } from '../actions/productAction';
 const LoginSignup = () => {
+  const location=useLocation();
   const navigate = useNavigate()
   const dispatch = useDispatch();
   const {loading,error,isAuthenticated} = useSelector(state=>state.user)
@@ -59,6 +60,17 @@ const LoginSignup = () => {
     formData.append('password',password);
     dispatch(userRegister(formData))
    }  
+   const redirect = location.search ? location.search.split("=")[1] : "/";
+  // const redirect = location.pathname + location.search
+   console.log(location.search)
+  // const redirect = () => {
+  //   const search = location.search;
+  //   if (typeof search !== "undefined") {
+  //     return search.split("=")[1];
+  //   } else {
+  //     return "/account";
+  //   }
+  // };
    useEffect(()=>{
     if(error){
       alert.error(error);
@@ -66,9 +78,9 @@ const LoginSignup = () => {
       dispatch(clearErrors())
     }
     if(isAuthenticated){
-      navigate('/')
+      navigate(redirect)
     }
-   },[dispatch,isAuthenticated,error,alert,navigate])
+   },[dispatch,isAuthenticated,error,alert,navigate,redirect])
 
     const loginTab = useRef(null);
     const registerTab = useRef(null);

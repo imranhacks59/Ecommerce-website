@@ -9,9 +9,13 @@ export const cartReducer=(state={cartItems:[],shippingInfo:{}},action)=>{
                 i.product === item.product
             ))
             if(isItemExist){
-                state.cartItems.map((i)=>(
-                     i.product === isItemExist.product ? item:i
-                ))
+                return{
+                    ...state,
+                    cartItems:state.cartItems.map((i)=>(
+                        i.product === isItemExist.product ? item:i
+                   ))
+                }
+                
             }else{
                 return{
                     ...state,

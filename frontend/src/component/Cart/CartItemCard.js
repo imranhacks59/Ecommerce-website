@@ -7,8 +7,8 @@ const CartItemCard = ({item}) => {
     <div className='cartItemCard'>
       <img src={item.image} alt={item.name} />
       <div className='cartItemcardDetail'>
+        <p>{item.name}</p>
         <p>{item.price}</p>
-        <p>150000</p>
       </div>
     </div>
   )
