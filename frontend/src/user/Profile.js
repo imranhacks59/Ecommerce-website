@@ -13,7 +13,7 @@ const Profile = () => {
       padding:'100px'
     }}>
       Profile
-
+welcome to my profile
       <div>
         <Button onClick={redirectToOther}>other page</Button>
       </div>
