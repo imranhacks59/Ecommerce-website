@@ -24,6 +24,7 @@ import axios from 'axios'
     // const {name,email,password} = userData
     // console.log(name,email)
     const {data} = await axios.post(`/api/v1/register`,userData,config)
+    localStorage.setItem('userInfo', JSON.stringify(data));
     dispatch({
         type:USER_REGISTER_SUCCESS,
         payload:data.user
@@ -43,7 +44,7 @@ export const userLogin = (email,password) => async (dispatch) => {
       const config = { headers: { "Content-Type": "application/json" } };
   
       const { data } = await axios.post(`/api/v1/login`, {email,password}, config);
-  
+      localStorage.setItem('userInfo', JSON.stringify(data));
       dispatch({ type: USER_LOGIN_SUCCESS, payload: data.user });
     } catch (error) {
       dispatch({
@@ -63,11 +64,26 @@ export const userLogin = (email,password) => async (dispatch) => {
       // const config = {
       //   headers:{ 'Content-Type':'application/json'}
       // }
+
       const {data} = await axios.get('/api/v1/me')
       dispatch({
         type:LOAD_USER_SUCCESS,
         payload:data.user
       })
+      // const userInfo =await localStorage.getItem('userInfo');
+      // if (userInfo) {
+      //   const user = JSON.parse(userInfo);
+      //   dispatch({
+      //     type: USER_LOGIN_SUCCESS,
+      //     // type:LOAD_USER_SUCCESS,
+      //     payload: user.data,
+      //   });
+      // } else {
+      //   dispatch({
+      //     type: USER_LOGIN_FAIL,
+      //     payload: 'User not authenticated',
+      //   });
+      // }
     } catch (error) {
       dispatch({
         type:LOAD_USER_FAIL,

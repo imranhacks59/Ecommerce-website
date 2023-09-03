@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import './Cart.css'
 import CartItemCard from './CartItemCard'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { addToCart } from '../../actions/cartAction'
 
@@ -32,9 +32,14 @@ const Cart = () => {
     const newQty=quantity+1
     dispatch(addToCart(id,newQty))
   }
+  const location = useLocation();
+  const redirect = location.search ? location.search.split('=')[1]:''
   const navigate=useNavigate()
   const checkoutHandler=()=>{
-    navigate('/login?navigate=shipping')
+    // navigate('/shipping')
+    navigate(`/login?redirect=shipping`)
+    // navigate(`/login?${redirect=shipping}`)
+    // navigate(`/shipping${redirect ? `?redirect=${redirect}` : ''}`);
   }
   return (
     <Fragment>

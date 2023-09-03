@@ -2,14 +2,14 @@ import React, { useState } from 'react'
 import './Shipping.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { saveShippingInfo } from '../../actions/cartAction';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,useLocation } from 'react-router-dom';
 
 const Shipping = () => {
     const {shippingInfo}=useSelector(state=>state.cart)
-    const [address,setAddress]=useState();
-    const [city,setCity]=useState();
-    const [state,setState]=useState();
-    const [number,setNumber]=useState();
+    const [address,setAddress]=useState('');
+    const [city,setCity]=useState('');
+    const [state,setState]=useState('');
+    const [number,setNumber]=useState(null);
     
     const dispatch=useDispatch()
     const navigate=useNavigate()
@@ -21,7 +21,7 @@ const Shipping = () => {
     }
   return (
     <div className='shippingContainer'>
-        <div className=''>
+        <div className='shippingBox'>
             <form
             className='shippingForm'
             encType='multipart/form-data'

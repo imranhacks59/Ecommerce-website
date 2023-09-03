@@ -1,17 +1,23 @@
+import { Button } from '@mui/material'
 import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
+
 const Profile = () => {
-    const {isAuthenticated,user} = useSelector(state=>state.user)
-    const navigate = useNavigate()
-    useEffect(()=>{
-     if(isAuthenticated===false){
-       navigate('/login')
-     }   
-    },[isAuthenticated,navigate])
+  const navigate = useNavigate()
+   const redirectToOther=()=>{
+    navigate('/cart')
+   }
   return (
-    <div>Profile</div>
+    <div style={{
+      padding:'100px'
+    }}>
+      Profile
+
+      <div>
+        <Button onClick={redirectToOther}>other page</Button>
+      </div>
+    </div>
   )
 }
 

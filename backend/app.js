@@ -5,6 +5,7 @@ const path = require('path');
 const errorMiddleware = require("./middleware/error");
 
 const cors = require("cors");
+require("dotenv").config({ path: "backend/config/config.env" });
 
 
 app.use(express.json());
@@ -15,10 +16,12 @@ app.use(cookieParser());
 const product = require("./routes/productRoute");
 const user = require("./routes/userRoute");
 const cart = require('./routes/cartRoute');
+const payment=require('./routes/paymentRoute')
 
 app.use("/api/v1",product);
-app.use("/api/v1/",user);
-app.use('/api/v1',cart)
+app.use("/api/v1",user);
+app.use('/api/v1',cart);
+app.use('/api/v1',payment)
 
 // app.use(express.static(path.join(__dirname, "../frontend/build")));
 // app.get("*", function (_, res) {

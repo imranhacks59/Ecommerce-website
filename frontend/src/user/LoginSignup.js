@@ -62,7 +62,7 @@ const LoginSignup = () => {
    }  
    const redirect = location.search ? location.search.split("=")[1] : "/";
   // const redirect = location.pathname + location.search
-   console.log(location.search)
+   console.log(location.search.split('=')[1])
   // const redirect = () => {
   //   const search = location.search;
   //   if (typeof search !== "undefined") {
@@ -80,6 +80,7 @@ const LoginSignup = () => {
     if(isAuthenticated){
       navigate(redirect)
     }
+    console.log('inside useefeect ',redirect)
    },[dispatch,isAuthenticated,error,alert,navigate,redirect])
 
     const loginTab = useRef(null);

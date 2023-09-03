@@ -1,6 +1,9 @@
 .shippingContainer{
     padding: 10vmax;
 }
+.shippingBox{
+    
+}
 .shippingForm{
     display: flex;
     flex-direction: column;

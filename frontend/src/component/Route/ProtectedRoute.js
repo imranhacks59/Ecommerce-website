@@ -1,99 +1,63 @@
-import { useSelector } from "react-redux";
-import { Navigate, Outlet } from "react-router-dom";
-const ProtectedRoute = ({  children }) => {
-  const {isAuthenticated} = useSelector(state=>state.user)
-  if (!isAuthenticated) {
-    return <Navigate to="/login" replace />;
-  }
-  return children;
-  // return children ? children : <Outlet />;
-};
-export default ProtectedRoute;
-
-
-
-// import React, { Fragment, useEffect, useState } from "react";
-// import { useSelector } from "react-redux";
-// import { Navigate, Route } from "react-router-dom";
-// // import { USER_REGISTER_SUCCESS } from "../../constants/userConstant";
-
-// const ProtectedRoute = ({ component: Component, isAdmin, ...rest }) => {
-//   const { loading, isAuthenticated, user } = useSelector((state) => state.user);
-//   return (
-//     <Route
-//       {...rest}
-//       render={(props) =>
-//         isAuthenticated ? (
-//           isAdmin ? (
-//             <Component {...props} />
-//           ) : (
-//             <Navigate to="/login" />
-//           )
-//         ) : (
-//           <Navigate to="/login" />
-//         )
-//       }
-//     />
-//   );
-// };
-// const ProtectedRoute = ({ isAdmin, component: Component, ...rest }) => {
-//   const { loading, isAuthenticated, user } = useSelector((state) => state.user);
-//    useEffect(()=>{
-//     if(isAuthenticated){
-       
-//     }
-//    })
-//   return (
-//     <Fragment>
-//       {loading === false && (
-//         <Route
-//           {...rest}
-//           render={(props) => {
-//             if (isAuthenticated === false) {
-//               return <Navigate to="/login" />;
-//             }
-
-//             if (isAdmin === true && user.role !== "admin") {
-//               return <Navigate to="/login" />;
-//             }
-
-//             return <Component {...props} />;
-//           }}
-//         />
-//       )}
-//     </Fragment>
-//   );
-// };
-
-// export default ProtectedRoute;
-
-
-
-
-// import React from 'react';
-// import { useSelector } from 'react-redux';
-// import { Route, useNavigate } from 'react-router-dom';
-
-// const ProtectedRoute = ({ isAdmin, component: Component, ...rest }) => {
-//   const { loading, isAuthenticated, user } = useSelector((state) => state.user);
-//   const navigate = useNavigate();
-
-//   if (loading) {
-//     return null; // Render loading state or placeholder if needed
-//   }
-
+// import React from "react";
+// import { Navigate, Outlet } from "react-router-dom";
+// const ProtectedRoute = ({ isAuthenticated, children }) => {
+ 
 //   if (!isAuthenticated) {
-//     navigate('/login');
-//     // return null; // Render loading state or placeholder if needed while navigating
+//     return <Navigate to="/login" />;
 //   }
-
-//   if (isAdmin && user.role !== 'admin') {
-//     navigate('/login');
-//     // return null; // Render loading state or placeholder if needed while navigating
-//   }
-
-//   return <Route {...rest} element={<Component />} />;
+//   // return children; only work for children that will be using protected route
+//   // we will use outlet to more readable
+//   // return children ? children : <Outlet />;
+//   return <Outlet />
 // };
-
 // export default ProtectedRoute;
+import React from "react";
+import { Navigate, Outlet } from "react-router-dom";
+
+const ProtectedRoute = ({
+  isAuthenticated,
+  children,
+  adminRoute,
+  isAdmin,
+  redirect = "/login",
+  redirectAdmin = "/profile",
+}) => {
+  if (!isAuthenticated) {
+    return <Navigate to={redirect} />;
+  }
+
+  if (adminRoute && !isAdmin) {
+    return <Navigate to={redirectAdmin} />;
+  }
+
+  return children ? children : <Outlet />;
+};
+
+export default ProtectedRoute;
+// import { useState, useEffect } from "react";
+// // import { useAuth } from "../../context/auth";
+// import { Navigate, Outlet } from "react-router-dom";
+// import { useSelector } from "react-redux";
+
+// export default function ProtectedRoute() {
+//   const [ok, setOk] = useState(false);
+//   // const [auth, setAuth] = useAuth();
+//   const {isAuthenticated}=useSelector(state=>state.user)
+
+//   useEffect(() => {
+//     // const authCheck = async () => {
+//     //   const res = await axios.get("/api/v1/auth/user-auth");
+//       if (isAuthenticated) {
+//         setOk(true);
+//       } else {
+//         setOk(false);
+//       }
+//     // };
+//     // if (auth?.token) authCheck();
+//   }, [isAuthenticated]);
+
+//   return ok ? <Outlet /> : Navigate('/login');
+// }
+
+
 
