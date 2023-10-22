@@ -1,12 +1,19 @@
-.App {
+/* .App {
   text-align: center;
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 40vmin;  
   pointer-events: none;
 }
-
+:root {
+  --black: #000;
+  --grey: #ddd;
+  --font-grey: #717171;
+  --white: #ffffff;
+  --theme:#69a2c5;
+  --light-grey: #f7f7f7;
+  --bg-color:rgb(231, 231, 231),
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -35,4 +42,14 @@
   to {
     transform: rotate(360deg);
   }
+} */
+:root {
+  --black: #000;
+  --grey: #ddd;
+  --font-grey: #717171;
+  --white: #ffffff;
+  --theme: #35676e;
+  /* #69a2c5; */
+  --light-grey: #f7f7f7;
+  --bg-color:rgb(231, 231, 231),
 }

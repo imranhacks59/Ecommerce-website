@@ -1,0 +1,390 @@
+.navBarBigContainer {
+  width: 100%;
+  max-width: 100%;
+  background-color: var(--theme) !important;
+  height: 60px;
+  position: fixed;
+  /* position: sticky; */
+  top: 0;
+  left: 0;
+  z-index: 1100;
+}
+
+.css-vdgehi {
+  display: inline-flex;
+  flex-direction: column;
+  position: relative;
+  min-width: 0px;
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
+  vertical-align: top;
+  background-color: white;
+  border-radius: 5px;
+  width: 100% !important;
+}
+.css-1qqsdnr-MuiAutocomplete-root {
+    width: 50vw !important;
+    /* margin-left: 8vw; */
+}
+
+.navBarContainer {
+  /* width: 100%; */
+  max-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  padding: 0px 15px;
+  margin-top: 0 auto;
+}
+
+.menuIcon {
+  display: none;
+}
+
+.navIconsMobile {
+  display: none;
+}
+
+.searchCategory {
+  display: flex;
+  align-items: center;
+}
+
+.logoContainer {
+  display: flex;
+  /* justify-content: space-around; */
+  align-items: center;
+  margin-left: 50px;
+
+}
+
+/* .searchCategoryDropdown{
+    width: 150px;
+    height: 35vh;
+  } */
+.navIcons {
+  display: flex;
+  justify-content: space-between;
+
+  align-items: center;
+  /* width: 30%; */
+  /* gap: 20px; */
+}
+
+.navIcons>div:not(:last-child) {
+  margin-right: 40px;
+}
+
+.navHomeIcon {
+  display: flex;
+  /* flex-direction: row; */
+  /* align-items: center; */
+  /* height: 24px; */
+  /* width: 110px; */
+  /* gap: 0px; */
+  /* line-height: 0px; */
+  color: #fff;
+  /* justify-content: space-between; */
+  cursor: pointer;
+  /* margin: auto; */
+}
+
+.menuIconImg {
+  display: flex;
+  color: #fff;
+  cursor: pointer;
+  /* font-size: 1.8rem; */
+}
+
+.logo {
+  background-color: white;
+  width: 120px;
+  height: 50px;
+  border-radius: 0.5px;
+}
+
+.navHomeCart {
+  height: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  /* border: 2px solid gray; */
+}
+
+.cartItemcount {
+  color: black;
+}
+.navWishlist {
+
+  /* height: 44px;
+  line-height: 0px; */
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-around;
+  width: 90px;
+  align-items: center;
+}
+.navHomeAppDownload {
+
+  height: 44px;
+  line-height: 0px;
+  color: #fff;
+  cursor: pointer;
+  width: 130px;
+  /* border: 2px solid gray; */
+}
+
+.navHomeAppDownload>div {
+
+  margin-bottom: 5px;
+}
+
+.navHomeIcon>img {
+  /* background-color: #12b76a; */
+  height: 100%;
+  width: 100%;
+}
+
+.navHomeIcon>p {
+  /* background-color: #12b76a; */
+  font-size: 14px;
+}
+
+.navHomeUserPicture {
+  height: 45px;
+  position: relative;
+}
+
+.navHomeUserPicture>img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.navOnlineIcon {
+  position: absolute;
+  height: 14px;
+  width: 14px;
+  background-color: #12b76a;
+  border-radius: 50%;
+  top: 28px;
+  border: 2px solid white;
+  left: 30px;
+}
+
+.custom-textfield input::placeholder {
+  color: darkgray;
+  /* Change to your desired color */
+}
+
+.css-1h51icj-MuiAutocomplete-root {
+  width: 35vw;
+}
+.css-vdgehi {
+  width: 100% !important;
+}
+.css-18nc3u2 .MuiOutlinedInput-root.MuiInputBase-sizeSmall {
+  width: 20vmax !important;
+}
+.navLoginCont{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.navLogin{
+  /* height: 40px; */
+  padding: 1px !important;
+  align-items: center;
+}
+@media screen and (max-width: 1200px) {
+  .navIcons>div:not(:last-child) {
+    /* margin-right: 10px; */
+    margin-bottom: 10px;
+  }
+  .css-vdgehi {
+    width: 100% !important;
+  }
+  
+}
+
+/* mobile view */
+/* media query */
+@media screen and (max-width: 1000px) {
+  .searchCategory {
+    display: none;
+  }
+
+  .navIcons {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+    top: 60px;
+    background-color: #259ae1;
+    width: 0px;
+    overflow: hidden;
+
+  }
+
+  .navIcons.active {
+    width: 270px;
+  }
+  .css-18nc3u2 .MuiOutlinedInput-root.MuiInputBase-sizeSmall {
+    width: 40vmax!important;
+}
+  .navIcons>div {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.205);
+    margin-bottom: 0.3vmax;
+  }
+
+  .navIconsMobile {
+    display: block;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .menuIcon {
+    display: block;
+    cursor: pointer;
+    margin-right: 2px;
+  }
+
+  .navHomeIcon {
+    padding-right: 12px;
+  }
+}
+
+
+/* Add this media query for tablet devices */
+@media screen and (max-width: 800px) {
+  .searchCategory {
+    display: none;
+  }
+
+  .navIcons {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+    top: 60px;
+    background-color: #259ae1;
+    width: 0px;
+    overflow: hidden;
+  }
+
+  .navIcons.active {
+    width: 270px;
+  }
+
+  .navIcons>div {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.205);
+  }
+
+  .navIconsMobile {
+    display: block;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .menuIcon {
+    display: block;
+    cursor: pointer;
+  }
+
+  .navHomeIcon {
+
+    padding-right: 10px;
+  }
+}
+
+
+
+
+@media screen and (max-width: 600px) {
+  .navBarContainer {
+    padding: 0px 0px;
+  }
+
+  .logoContainer {
+    margin-left: 0px;
+  }
+
+  .navIcons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: absolute;
+    right: 0;
+    top: 60px;
+    background-color: #259ae1;
+    width: 0px;
+    overflow: hidden;
+  }
+
+  .navIcons.active {
+    width: 270px;
+  }
+
+  .searchTextfield {
+    padding: 0px;
+    width: 265px;
+
+  }
+  .css-18nc3u2 .MuiOutlinedInput-root.MuiInputBase-sizeSmall {
+    width: 40vmax!important;
+}
+  .search-autocomplete {
+    width: 265px;
+  }
+
+  .menuIcon {
+    display: block;
+    cursor: pointer;
+  }
+
+  .navHomeIcon {
+    /* margin-right: unset; */
+    margin-right: 3px;
+  }
+
+  .navIconsMobile {
+    display: block;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .navIcons>div {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.205);
+  }
+
+  .searchCategory {
+    display: none;
+  }
+
+  .navIcons>div {
+    margin-right: 0px;
+  }
+
+  /* .custom-textfield{
+    margin-left: 50px;
+   } */
+}

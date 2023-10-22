@@ -41,6 +41,7 @@ const Cart = () => {
     // navigate(`/login?${redirect=shipping}`)
     // navigate(`/shipping${redirect ? `?redirect=${redirect}` : ''}`);
   }
+  console.log(cartItems)
   return (
     <Fragment>
      <div className='cartContainer'>
@@ -82,7 +83,7 @@ const Cart = () => {
                 <p>Total Price</p>
                 <p>
                     {
-                      cartItems.reduce((acc,item)=>
+                      cartItems&&cartItems.reduce((acc,item)=>
                       acc+item.quantity*item.price,
                       0
                       )

@@ -11,6 +11,7 @@
     align-items: center;
     justify-content: center;
     color: white;
+    margin-top: 5vmax;
 
 }
 
@@ -30,27 +31,60 @@
 
 .homePageProducts{
     
+    /* margin: 0vmax 10vmax; */
+    width: 95vw;
     display: flex;
-    /* flex-direction: column; */
-    justify-content: center;
     flex-wrap: wrap;
-    width: 80vw;
-    max-width: 100%;
-    margin: 2vmax auto;
+    justify-content: space-around;
+    gap: 5px;
+    cursor: pointer;
 
 }
 
 .productCard{
-    width: 14vmax;
+    width: 16vmax;
     display: flex;
     flex-direction: column;
-    margin: 2vmax;
+    /* justify-content: space-between; */
+    text-decoration: none;
+    /* margin: 2vmax; */
+    margin-top: 10px;
+    cursor: pointer;
+    border: 2ps solid gray;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(45deg, #fcfcfc, #e8dfd0);
+    /* gap: 10px; */
+    border-radius: 5px;
+    transition: transform 0.2s ease;
+transform: scale(1);
 }
-
+.productCard:hover{
+    transform: scale(1.05);
+}
+/* .productCard>div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 5px;
+    padding: 5px;
+} */
 .productCard > img{
      width: 14vmax;
 }
+.productCard>.productCardImage>img{
+    /* width: 100%;
+    height: 70%; */
+    width: 15vmax;
+    height: 14vmax;
+    background-color: #ebebeb;
+    padding: 8px;
 
+  /* width: 400px;
+  height: 400px; */
+  cursor: pointer;
+  transition: .3s ease-in-out;
+border-radius: 5px 5px 2px 2px;
+}
 .productCard > p{
     font-size: 1.4vmax;
     margin: 1vmax 0.5vmax;
@@ -70,16 +104,48 @@
 .productCard  >span{
     font: 1vmax;
 }
+.productCard>div{
+    /* .productCard>div { */
+        display: flex;
+        /* flex-direction: column; */
+        /* justify-content: space-around; */
+        /* gap: 5px; */
+        /* padding: 5px; */
+    /* } */
+}
+@media screen and (max-width:800px) {
+    /* .productCardImage{
+        margin: 8vmax auto 2vmax auto;
+    } */
+    .banner{
+        margin-top: 7vmax;
 
-
+    }
+}
 @media screen and (max-width: 600px){
+    /* .productCardImage{
+        margin: 10vmax auto 2vmax auto;
+    } */
+    .productCard{
+        width: 22vmax;
+    }
+    .homeHeading {
+        margin: 3vmax auto;
+        
+    }
+    .banner{
+        margin: 10vmax 0vmax 0vmax 0vmax;
+
+    }
+    /* .productCard{
+        width: 22vmax;
+    }
     .productCard >p{
         font-size: 1.8vmax;
     }
     .productCard >div{
         margin: 0;
         display: block;
-        /* display: flex; */  
     }
     
     .productCard > span{
@@ -89,6 +155,10 @@
     .productCard > div > span {
         margin: 0 0.5vmax;
         font: 300 1vmax;
+    } */
+    .productCard>.productCardImage>img{
+        width: 21vmax;
+        height: 18vmax;
     }
     
 }

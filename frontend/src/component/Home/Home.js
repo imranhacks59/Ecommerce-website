@@ -5,6 +5,7 @@ import { useDispatch, useSelector,  } from 'react-redux';
 import { getProduct,clearErrors } from '../../actions/productAction';
 import Loader from '../Layout/Loader/Loader';
 import {useAlert}  from 'react-alert'
+import Layout from '../Layout/Layout';
 
 const Home = () => {
   const alert = useAlert();
@@ -26,7 +27,11 @@ const Home = () => {
       (
         
 
-        <Fragment>
+        <Layout
+        title={'Snyp Ecommerce'}
+        description={''}
+        keywords={''}
+        >
         <div className='banner'>
             <p>Welcome to ecommerce</p>
             <h1>FIND AMAZING PRODUCTS BELOW</h1>
@@ -40,12 +45,7 @@ const Home = () => {
        
             <h2 className='homeHeading'>Featured Products</h2>
             <div className='homePageProducts'>
-            {/* <Product products={products} />
-            <Product products={products}/>
-            <Product products={products} />
-            <Product products={products}/>
-            <Product products={products}/>
-            <Product products={products}/> */}
+            
             {
               products &&
               products.map((product)=>(
@@ -55,7 +55,7 @@ const Home = () => {
             </div>
             
         
-        </Fragment>
+        </Layout>
       )
     }
   </Fragment>

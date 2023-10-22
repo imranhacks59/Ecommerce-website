@@ -1,0 +1,138 @@
+.drawerDarkBG{
+background-color: rgba(0, 0, 0, 0.1);
+width: 100vw;
+height: 100vh;
+z-index: 0;
+position: absolute;
+left: 0%;
+top: 0%;
+z-index: 1000;
+
+/* transform: translate(-50% -50%); */
+}
+.sidebarPosition{
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    /* transform: translate(-50% -50%); */
+    /* height: 80%; */
+    display: block;
+    z-index: 3;
+    z-index: 1001;
+}
+.drawer{
+   width: 55vw;
+   height: 95vh;
+   background: white;
+   color: white;
+   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
+   padding-top: 20px;
+   padding-left: 5px;
+   
+}
+.drawerContent{
+    font-size: 14px;
+    color: #2c3e50;
+    display: flex;
+    flex-direction: column;
+    /* flex-wrap: wrap; */
+    padding-left: 0.1vmax;
+    /* border: 2px solid gray; */
+    overflow-y: hidden;
+}
+.drawerItems{
+    display: flex;
+    /* justify-content: space-between; */
+    /* align-items: center; */
+    flex-direction: column;
+    
+}
+.sidebar-open {
+    overflow: hidden;
+  } 
+.scrollableContainer{
+    max-height: calc(95vh - 40px); /* Adjust the max height as needed */
+    overflow-y: auto;
+}
+.drawerHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 5px;
+}
+.drawerHeaderCategoryTitle{
+    /* align-items: center; */
+    padding-right: 30%;
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--font-color);
+}
+.drawerItem{
+    padding-top: 3px;
+    padding-left: 5px;
+    font-size: 15px;
+    color: var(--font-color);
+    font-weight: 500;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    white-space: nowrap;
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    /* overflow-y: auto; */
+}
+.drawerItem:hover{
+    /* background-color: #525d62; */
+}
+.drawerBackIcon{
+    cursor: pointer;
+    /* width: 46px;
+    height: 46px; */
+    opacity: 0.7;
+}
+.categoryAddIcon{
+    width: 46px;
+    height: 46px;
+    opacity: 0.8;
+}
+.subcategoriesrightIcon{
+    font-size: 22px;
+    opacity: 0.7;
+    padding-left: 15px;
+    width: 46px;
+    height: 46px;
+    line-height: 46px;
+}
+.drawerRow{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+    cursor: pointer;
+}
+.drawerSubCategoryList{
+    list-style: none;
+    padding: 0px 7px;
+    background-color: rgb(245, 245, 245);
+}
+.drawerSubCategoryItems{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    /* background-color: rgb(245, 245, 245); */
+}
+.drawerSubCategoryItem{
+    position: relative;
+    display: block;
+    color: #000;
+    padding: 9px 18px 9px 5px;
+    line-height: normal;
+    font-weight: 400;
+    overflow: hidden;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+    cursor: pointer;
+}

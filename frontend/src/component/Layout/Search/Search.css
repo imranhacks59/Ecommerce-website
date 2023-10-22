@@ -1,0 +1,62 @@
+.searchContainerDarkBg{
+    /* background-color: rgba(0, 0, 0, 0.4); */
+  /* background-color: blue; */
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    z-index: 3000;
+}
+.searchInputPosition{
+    top: 0%;
+    left: 0%;
+    display: block;
+    z-index: 3000;
+}
+
+.css-1h51icj-MuiAutocomplete-root .MuiOutlinedInput-root.MuiInputBase-sizeSmall {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 6px;
+    /* background-color: antiquewhite; */
+}
+
+.searchInputModal{
+    width: 100vw;
+    height: 100vh;
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
+    z-index: 3200;
+}
+.searchModalInput{
+    
+}
+.searchInputBox{
+    width: 100vw;
+    height: 60px;
+    background-color: var(--theme);
+    display: grid;
+    grid-template-columns: 1.5fr 6fr; 
+    align-items: center;
+    z-index: 3300;
+}
+.searchModalTextField{
+    /* width: 400px; */
+    width: 80%;
+}
+.searchModalBackArrow{
+    padding-left: 10px;
+}
+.drawerBackIcon{
+    width: 40px;
+}
+
+@media screen and (max-width:600){
+    .searchModalBackArrow{
+        padding-left: 5px;
+        padding-right: 5px;
+    } 
+    
+}
